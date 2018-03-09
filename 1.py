@@ -27,5 +27,4 @@ for k in range(1,702,1):
 			em2[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[4]/text()')
 			em3[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[5]/text()')
 			print em[i][0] + ' ' + em1[i][0] + ' ' + em2[i][0] + ' ' + em3[i][0]
-			break
-	break
+			exit()
