@@ -1,30 +1,20 @@
 #include <cstdio>
 #include <algorithm>
-#include <iostream>
 using namespace std;
-long int arr[100000];
-int main()
-{
-    int n, p;
-    cin>>n>>p;
-    for(int i = 0; i < n; ++i)
-        cin>>arr[i];
-    sort(arr, arr+n);
-    int max_len = 0;
-    int prev_j = 0;
-    for(int i = 0; i < n; ++i) {
-        int j;
-        for(j = prev_j; j < n; ++j)
-            if (arr[j] > arr[i]*p)
-                break;
-        if (j < n) {
-            max_len = (j-i) > max_len ? (j-i):max_len;
-            prev_j = j-1;
-        } else {
-            max_len = (n-i) > max_len ? (n-i):max_len;
-            prev_j = n;
-        }
+int main(){
+    int n,p;
+    scanf("%d%d",&n,&p);
+    int a[n];
+    for(int i=0;i<n;i++){
+        scanf("%d",&a[i]);
     }
-    printf("%d\n", max_len);
+    sort(a,a+n);
+    int i=0,j=0,count=1;
+    while(j<n&&i<n)
+        if(a[j]<=(long long)a[i]*p){
+            count = max(count,j-i+1);
+            j++;
+        }else i++;
+    printf("%d",count);
     return 0;
 }
