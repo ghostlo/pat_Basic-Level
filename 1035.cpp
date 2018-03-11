@@ -1,3 +1,12 @@
+//
+//  main.cpp
+//  15.1035_sort
+//
+//  Created by time on 18/3/11.
+//  Copyright © 2018年 ghostlo. All rights reserved.
+//
+
+#include <iostream>
 #include <cstdio>
 #include <algorithm>
 using namespace std;
@@ -8,7 +17,7 @@ bool same(int *a, int *b, int n)
             return false;
     return true;
 }
-void print_arr(int *a, int n) 
+void print_arr(int *a, int n)
 {
     for(int i = 0; i < n; ++i) {
         if (i == 0)
@@ -19,7 +28,7 @@ void print_arr(int *a, int n)
     printf("\n");
 }
 
-bool insertSort(int *a, int *step, int n)
+bool iS(int *a, int *step, int n)
 {
     int i, j;
     for(i = 0; i < n-1 && step[i] <= step[i+1]; ++i);
@@ -34,7 +43,7 @@ bool insertSort(int *a, int *step, int n)
     }
 }
 
-void mergeSort(int *arr, int *step, int n)
+void mS(int *arr, int *step, int n)
 {
     printf("Merge Sort\n");
     int itvl = 1;
@@ -52,14 +61,14 @@ void mergeSort(int *arr, int *step, int n)
 int main()
 {
     int n;
-    int arr[100];
-    int step[100];
+    int first[100];
+    int second[100];
     scanf("%d", &n);
     for(int i = 0; i < n; ++i)
-        scanf("%d", &arr[i]);
+        scanf("%d", &first[i]);
     for(int i = 0; i < n; ++i)
-        scanf("%d", &step[i]);
-    if (!insertSort(arr, step, n))
-        mergeSort(arr, step, n);
+        scanf("%d", &second[i]);
+    if (!iS(first, second, n))
+        mS(first, second, n);
     return 0;
 }
