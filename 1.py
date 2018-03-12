@@ -1,3 +1,5 @@
+import re
+from bs4 import BeautifulSoup as bs
 import requests
 from lxml import etree
 headers = {
@@ -24,15 +26,16 @@ for k in range(1,702,1):
 	print em4[0]+' The page is : '+str(k)
 	m=int(em4[0])
 	n=int(z)
-	if(m<n+5):
+	if(m<n+3):
 		for i in range(1, 50, 1):
 			em[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[1]/text()')
 			em1[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[2]/a/text()')
-			print em[i][0]+' '+em1[i][0]+"   It's not you"
 			if(em1[i][0]==q):
 				em2[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[4]/text()')
 				em3[i] = contentTree.xpath('//*[@id="ranklist"]/tbody/tr[' + str(i) + ']/td[5]/text()')
 				print 'your detail'+em[i][0] + ' ' + em1[i][0] + ' ' + em2[i][0] + ' ' + em3[i][0]
 				exit()
+			else if(em1[i][0]!=q):
+				print em[i][0]+' '+em1[i][0]+"   It's not you"
 	else:
 		continue
